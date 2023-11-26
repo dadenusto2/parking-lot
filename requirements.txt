@@ -1,0 +1,11 @@
+Flask==2.2.5
+connexion[swagger-ui]==2.14.2
+waitress==2.1.2
+swagger-ui-bundle==0.0.9
+numpy==1.25.1
+opencv_python==4.8.0.74
+PyYAML==6.0
+setuptools==68.0.0
+ultralytics==8.0.142
+pandas==2.0.3
+shapely==2.0.1

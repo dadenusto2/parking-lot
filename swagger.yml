@@ -1,0 +1,37 @@
+openapi: 3.0.0
+info:
+  title: "Charge point parking REST API"
+  description: "Получение кол-во свободных мест"
+  version: "1.0.0"
+servers:
+  - url: "/api"
+paths:
+  /parking:
+    post:
+      operationId: "parking.get"
+      tags:
+        - chargePoint
+      summary: "Get chargePoint parking"
+      requestBody:
+        description: "get chargePoint parking"
+        required: True
+        content:
+          application/json:
+            schema:
+              x-body-name: "charge_point"
+              $ref: "#/components/schemas/ChargePoint"
+      responses:
+        "201":
+          description: "Successfully get ChargePoint"
+components:
+  schemas:
+    ChargePoint:
+      type: "object"
+      required:
+        - chargePointId
+        - url
+      properties:
+        chargePointId:
+          type: "string"
+        url:
+          type: "string"

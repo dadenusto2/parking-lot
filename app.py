@@ -11,5 +11,5 @@ def home():
 
 if __name__ == "__main__":
     from waitress import serve
-    app.run(host="0.0.0.0", port=4565, debug=True)
+    app.run(host="94.139.245.171", port=4565, debug=True)
 

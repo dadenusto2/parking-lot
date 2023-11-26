@@ -29,9 +29,6 @@ components:
       type: "object"
       required:
         - chargePointId
-        - url
       properties:
         chargePointId:
-          type: "string"
-        url:
           type: "string"

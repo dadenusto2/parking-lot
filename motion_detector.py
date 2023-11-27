@@ -31,7 +31,6 @@ class MotionDetector:
 
     def detect_motion(self):
 
-        return {'free': 1}
         my_file = open("models/coco.txt", "r")
         data = my_file.read()
         class_list = data.split("\n")

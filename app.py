@@ -29,7 +29,7 @@ def login():
         headers = {
             'Content-Type': 'application/json'
         }
-        conn.request("POST", "/api/parking", payload, headers)
+        conn.request("POST", "/api/parking", payload, headers, verify=False)
         res = conn.getresponse()
         data = res.read()
         return data.decode("utf-8")

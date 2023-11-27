@@ -20,7 +20,7 @@ def home():
     if request.method == 'POST':
         # проверка логина и пароля
         print(request.form.get('comp_select'))
-        url = "http://localhost:4565/api/parking"
+        url = "http://158.160.134.151:4565/api/parking"
 
         payload = json.dumps({
             "parking": "parking"

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+          </div>
+          <div class="card-body">
+            <form method="post">
+              <div class="mb-3">
+              <select name="comp_select" class="selectpicker form-control">
+                   {% for parking in parkings: %}
+                  <option value="{{ parking}}">{{ parking }}</option>
+                  {% endfor %}
+              </select>
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary">Запрос</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

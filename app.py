@@ -32,8 +32,7 @@ def login():
         conn.request("POST", "/api/parking", payload, headers)
         res = conn.getresponse()
         data = res.read()
-        print(data.decode("utf-8"))
-        return render_template('login.html', parkings=parkings)
+        return data.decode("utf-8")
     else:
         return render_template('login.html', parkings=parkings)
 

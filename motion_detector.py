@@ -64,7 +64,7 @@ class MotionDetector:
         px = pd.DataFrame(a).astype("float")
 
         # вычисляем парковку
-        coordinates_data = self.coordinates_data[1:]
+        coordinates_data = self.coordinates_data
         free = len(coordinates_data)
         for i, p in enumerate(coordinates_data):
             # координаты парковки

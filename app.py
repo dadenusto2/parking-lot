@@ -14,7 +14,7 @@ from coordinates_generator import CoordinatesGenerator
 app = connexion.App(__name__, specification_dir="./")
 app.add_api("swagger.yml")
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def home():
     parkings = ['parking']
     if request.method == 'POST':

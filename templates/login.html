@@ -10,6 +10,9 @@
           <div class="card-body">
             <form method="post">
               <div class="mb-3">
+              {% if free!='' %}
+              <h1>Свободно парковки - {{free}}</h1>
+              {% endif %}
               <select name="comp_select" class="selectpicker form-control">
                    {% for parking in parkings: %}
                   <option value="{{ parking}}">{{ parking }}</option>

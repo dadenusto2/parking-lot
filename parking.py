@@ -8,12 +8,15 @@ def get_timestamp():
     return datetime.now().strftime(("%Y-%m-%d %H:%M:%S"))
 
 
-def get(charge_point):
-    charge_point_id = charge_point.get("chargePointId")
+def get(parking):
+    parking = parking.get("parking")
     try:
-        with open(f'data/{charge_point_id}.yml', "r") as data:
+        with open(f'data/{parking}.yml', "r") as data:
             points = yaml.load(data, Loader=yaml.SafeLoader)
-            detector = MotionDetector(points, charge_point_id)
-            return detector.detect_motion()
+            detector = MotionDetector(points, parking)
+            print('before resp')
+            resp = detector.detect_motion()
+            print('resp', resp)
+            return resp
     except FileNotFoundError:
         return jsonify({'errorCode': 1})

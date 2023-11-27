@@ -1,6 +1,8 @@
 import http
 import json
+import ssl
 
+import requests
 from flask import render_template, Response, request  # Remove: import Flask
 import connexion
 
@@ -12,32 +14,30 @@ from coordinates_generator import CoordinatesGenerator
 app = connexion.App(__name__, specification_dir="./")
 app.add_api("swagger.yml")
 
-@app.route("/")
-def home():
-    return render_template("home.html")
-
 @app.route('/login', methods=['GET', 'POST'])
-def login():
+def home():
     parkings = ['parking']
     if request.method == 'POST':
         # проверка логина и пароля
         print(request.form.get('comp_select'))
-        conn = http.client.HTTPSConnection("localhost", 4565)
+        url = "http://localhost:4565/api/parking"
+
         payload = json.dumps({
-            "chargePointId": "parking"
+            "parking": "parking"
         })
         headers = {
             'Content-Type': 'application/json'
         }
-        conn.request("POST", "/api/parking", payload, headers, verify=False)
-        res = conn.getresponse()
-        data = res.read()
-        return data.decode("utf-8")
+
+        response = requests.request("POST", url, headers=headers, data=payload)
+        data = json.loads(response.text)
+        print(data['free'])
+        return render_template('login.html', parkings=parkings, free=data['free'])
     else:
-        return render_template('login.html', parkings=parkings)
+        return render_template('login.html', parkings=parkings, free='')
 
-
-if __name__ == "__main__":
+if __name__ == "_" \
+               "_main__":
     from waitress import serve
     app.run(host="0.0.0.0", port=4565, debug=True)
 

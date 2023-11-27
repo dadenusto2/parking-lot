@@ -20,9 +20,9 @@ class MotionDetector:
     DETECT_DELAY = 0
     model = YOLO('models/yolov8l-seg.pt')
 
-    def __init__(self,coordinates, charge_point_id, shouldReturn = True):
+    def __init__(self,coordinates, parking, shouldReturn = True):
         self.coordinates_data = coordinates
-        self.charge_point_id = charge_point_id
+        self.parking = parking
         self.shouldReturn = shouldReturn
         self.start_frame = 0
         self.contours = []
@@ -31,6 +31,7 @@ class MotionDetector:
 
     def detect_motion(self):
 
+        return {'free': 1}
         my_file = open("models/coco.txt", "r")
         data = my_file.read()
         class_list = data.split("\n")
@@ -105,7 +106,7 @@ class MotionDetector:
 
         print({'free': free})
         if self.shouldReturn:
-            return jsonify({'free': free})
+            return {'free': free}
         else:
             while 1:
                 open_cv.imshow('img', image)

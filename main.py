@@ -12,12 +12,12 @@ import logging
 def main():
     logging.basicConfig(level=logging.INFO)
 
-    charge_point_id = 'parking'
-    data_file = f'data/{charge_point_id}.yml'
+    parking = 'parking'
+    data_file = f'data/{parking}.yml'
 
     with open(data_file, "r") as data:
         points = yaml.load(data, Loader=yaml.SafeLoader)
-        detector = MotionDetector(points, charge_point_id,  False)
+        detector = MotionDetector(points, parking,  False)
         detector.detect_motion()
 
 
